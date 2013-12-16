@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+
+
+<title> The Decker Libary</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+<style type="text/css">
+
+body { 
+	background-color:#ffffff;
+	background-position: left top;
+	background-size:contain;  
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	font-family:Proxima Nova;
+	font-size: 15px;
+}
+
+/* Usage code from Fonts.com */
+@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=37aac3e0-9f5c-44c6-ad60-27759dca384d");
+@font-face{
+font-family:"FMittelschriftDIN1451W0";
+src:url("4df395f2-f1f6-4605-b2b3-4415f479f21f.eot?#iefix");
+src:url("4df395f2-f1f6-4605-b2b3-4415f479f21f.eot?#iefix") format("eot"),url("9b200f7b-19ef-4593-b3c1-b8220c54b006.woff") format("woff"),url("32f7db87-c8c6-4b5e-b1ba-317228618bb6.ttf") format("truetype"),url("c5e89196-4352-449f-8743-c1c2450decb5.svg#c5e89196-4352-449f-8743-c1c2450decb5") format("svg");
+}
+@font-face{
+font-family:"Proxima N W01 Thin Reg";
+src:url("37994fca-b67e-41db-94b3-44077c62810a.eot?#iefix");
+src:url("37994fca-b67e-41db-94b3-44077c62810a.eot?#iefix") format("eot"),url("da176885-bee9-49f7-88f0-d7ad9229ddd7.woff") format("woff"),url("1861a7b7-09a5-4efd-b681-5214784ded39.ttf") format("truetype"),url("610147b3-ad15-4b4b-a0fb-25244238ab3d.svg#610147b3-ad15-4b4b-a0fb-25244238ab3d") format("svg");
+}
+@font-face{
+font-family:"Proxima N W15 Reg";
+src:url("ccd538c8-85a6-4215-9f3f-643c415bbb19.eot?#iefix");
+src:url("ccd538c8-85a6-4215-9f3f-643c415bbb19.eot?#iefix") format("eot"),url("e8e438df-9715-40ed-b1ae-58760b01a3c0.woff") format("woff"),url("baf65064-a8a8-459d-96ad-d315581d5181.ttf") format("truetype"),url("76bd19c9-c46a-4c27-b80e-f8bd0ecd6057.svg#76bd19c9-c46a-4c27-b80e-f8bd0ecd6057") format("svg");
+}
+
+/* CSS Reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Your fonts in use in your page / site */
+body { font-family:"FMittelschriftDIN1451W0"; line-height: 1.25em; margin: 20px; }
+section { margin-bottom: 60px; }
+.second { font-family:"Proxima N W01 Thin Reg"; }
+.third { font-family:"Proxima N W15 Reg"; }
+h1 { font-size: 2em; margin-bottom: 24px; }
+
+
+
+
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+
+.post-content {
+    margin: 0 auto;
+    margin-top: -54px;
+    margin-left: 40px;
+    text-align:center
+    width:40%;
+    
+    
+. {
+    margin: 0 auto;
+    margin-top: -60px;
+    margin-left: 40px;
+    text-align:center
+    width:40%;
+
+
+
+
+</style>
+
+
+
+<script language="javascript">
+
+var buttonFolder = "images/";
+
+/*** List your images here that will be on the page and then the mouse over images in the 2nd array ***/
+upSources = new Array("b.png", "b2.png", "b3.png" , "b4.png" , "b5.png", "b6.png");
+
+overSources = new Array("y.png", "y2.png", "y3.png" , "y4.png" , "y5.png", "y6.png");
+
+
+//*** DO NOT CHANGE ANYTHING BELOW THIS LINE ***//
+totalButtons = upSources.length;
+
+
+
+//*** MAIN IMAGES FUNCTIONS ***//
+// PRELOAD MAIN MENU BUTTON IMAGES
+function preload() {
+for ( x=0; x<totalButtons; x++ ) {
+buttonUp = new Image();
+buttonUp.src = buttonFolder + upSources[x];
+buttonOver = new Image();
+buttonOver.src = buttonFolder + overSources[x];
+}
+}
+
+// SET MOUSEOVER IMAGE
+function setOverImg(But, ID) {
+document.getElementById('button' + But + ID).src = buttonFolder + overSources[But-1];
+}
+
+// SET MOUSEOUT IMAGE
+function setOutImg(But, ID) {
+document.getElementById('button' + But + ID).src = buttonFolder + upSources[But-1];
+}
+
+
+//preload();
+
+
+
+</script>
+
+
+
+
+
+
+</head>
+
+ 		
+    <body>
+    
+  
+
+<div class="row"
+  
+
+ 
+<!-- Button trigger modal -->
+ <div class="col-md-1 col-md-offset-8">
+ 
+ <a href="#myModal" class="texttrigger" data-toggle="modal">LOG IN</a>
+
+ 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">LOG IN</h4>
+      </div>
+      
+      <div class="modal-body">
+       
+       <form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+        <br>
+          <input type="checkbox"> REMEMBER ME
+        </label>
+      </div>
+    </div>
+  </div>
+</form>
+        
+      </div>
+      <div class="modal-footer">
+         <button type="button" class="btn btn-primary">SIGN IN</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">CANCEL</button>
+     
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+  <div class="col-md-2">MY ACCOUNT</div>
+</div>
+
+
+<br>
+
+
+
+<div class="row">
+<div class="col-xs-12 col-md-8">
+<a href = "index.html" ><img src="images/n 4.png"></a>
+</div>
+
+<div class="col-xs-12 col-md-4">
+<a href = "index.html" ><img src="images/n 8.png"></a>
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+<div class="col-xs-12 col-md-3">
+  <select class="form-control input-lg">
+  <option>LIBRARY SEARCH</option>
+  <option>IMAGE SEARCH</option>
+  <option>BOOK SEARCH</option>
+  <option>E-BOOK SEARCH</option>
+  <option>PERIDICAL SEARCH</option>
+</select>
+
+  </div>
+  
+
+  
+<div class="col-xs-12 col-md-2">
+  <select class="form-control input-lg">
+  <option>ALL FIELDS</option>
+  <option>TITLE</option>
+  <option>AUTHOR(S)</option>
+  <option>SUBJECT</option>
+  <option>ISBN</option>
+  <option>KEYWORD</option>
+</select>
+  </div>
+  
+ 
+  <div class="col-xs-12 col-md-3"><input class="form-control input-lg" id="focusedInput" type="text" value="Search"></div>
+    <div class="col-xs-4  col-md-1"><a href = "page1.html" ><img src="images/item2.png" width = "60"></a></div>
+    <div class="col-xs-4  col-md-1"><img src="images/item1.png" width = "60"></a></div>
+</div>
+    
+<br>
+
+
+<div class="row">
+
+ <div class="col-xs-6 col-md-2">
+ 
+ <a href="index.html" onMouseOver="setOverImg('1','');" onMouseOut="setOutImg('1','');" target=""><img src="images/b.png"  width = "300px" id="button1"</a></div>
+  
+<div class="col-xs-6 col-md-2">
+
+<a href="index.html" onMouseOver="setOverImg('2','');" onMouseOut="setOutImg('2','');" target=""><img src="images/b2.png" width = "300px" id="button2"</a></div>
+  
+ <div class="col-xs-6 col-md-2">
+ 
+ <a href="index.html" onMouseOver="setOverImg('3','');" onMouseOut="setOutImg('3','');" target=""><img src="images/b3.png" width = "300px" id="button3"</a></div>
+    
+ <div class="col-xs-6 col-md-2">
+ 
+ <a href="index.html" onMouseOver="setOverImg('4','');" onMouseOut="setOutImg('4','');" target=""><img src="images/b4.png" width = "300px" id="button4"></a></div>
+      
+ <div class="col-xs-6 col-md-2">
+ 
+ <a href="index.html" onMouseOver="setOverImg('5','');" onMouseOut="setOutImg('5','');" target=""><img src="images/b5.png" width = "300px" id="button5"></a></div>
+        
+<div class="col-xs-6 col-md-2">
+
+<a href="index.html" onMouseOver="setOverImg('6','');" onMouseOut="setOutImg('6','');" target=""><img src="images/b6.png" width = "300px" id="button6" ></a></div>
+  
+  </div>
+
+
+
+<br>
+<p></p>
+<br>
+
+
+<div class="row">
+ <div class="col-xs-12 col-md-4">
+<img src="images/s.png"> 
+<br>
+  <font color="ffb552">
+<h1 align="center">Palo Alto</h1></font>
+<section class="second">
+<p align="center">Author: James Franco</p>
+<p align="center">Publication Date: October 19, 2010</p>
+<p align="center">Genre: Fiction</p>
+</section>
+</div>
+
+<div class="col-xs-12 col-md-4">
+<img src="images/s 2.png">
+<br>
+  <font color="ffb552">
+<h1 align="center">The Last Skin</h1></font>
+<section class="second">
+<p align="center">Author: Barbara Ras</p>
+<p align="center">Publication Date: March 30, 2010</p>
+<p align="center">Genre: Poetry</p>
+</section>
+ </div>
+ 
+ <div class="col-xs-12 col-md-4">
+<img src="images/s 3.png"> 
+<p></p>
+  <font color="ffb552">
+<h1 align="center">Exit A</h1></font>
+<section class="second">
+<p align="center">Author: Anthony Swofford</p>
+<p align="center">Publication Date: February 19, 2008</p>
+<p align="center">Genre: Fiction</p>
+</section>
+
+</div>
+
+ </div>
+ 
+ <br>
+
+ 
+ 
+ 
+ <div class="row">
+ <div class="col-xs-12 col-md-4">
+<img src="images/s 4.png"> 
+  <font color="ffb552">
+<h1 align="center">Inside The Stalin Archives</h1></font>
+<section class="second">
+<p align="center">Author: Jonathan Brent</p>
+<p align="center">Publication Date: February 22, 2010</p>
+<p align="center">Genre:Non-Fiction</p>
+</section>
+</div>
+ 
+<div class="col-xs-12 col-md-4">
+<img src="images/s 5.png"> 
+  <font color="ffb552">
+<h1 align="center">And Then There's This</h1></font>
+<section class="second">
+<p align="center">Author: Bill Wasik</p>
+<p align="center">Publication Date: June 11, 2009</p>
+<p align="center">Genre: Non-Fiction</p>
+</section>
+</div>
+
+
+ <div class="col-xs-12 col-md-4">
+<a href = "page2.html" ><img src="images/s 6.png"></a> 
+<br>
+<font color="ffb552">
+<a href="page2.html"><h1 align="center">Milk</h1></a></font>
+<section class="second">
+<p align="center">Author: Anne Mendelson</p>
+<p align="center">Publication Date: October 7, 2008 </p>
+<p align="center">Genre: Non-Fiction</p>
+</section>
+</div>
+
+</div>
+
+
+<br>
+
+
+
+
+ <div class="row">
+<div class="col-xs-12 col-md-4">
+<img src="images/s 7.png">
+<font color="ffb552">
+<h1 align="center">The Fractalist</h1></font>
+<section class="second">
+<p align="center">Author: Benoit Mandelbrot</p>
+<p align="center">Publication Date: January 1, 2009</p>
+<p align="center">Genre:------</p>
+</section>
+ </div>
+
+
+<div class="col-xs-12 col-md-4">
+<img src="images/s 8.png">
+ <font color="ffb552">
+<h1 align="center">The Mind's Eye</h1></font>
+<section class="second">
+<p align="center">Author: Oliver Sacks
+</p>
+<p align="center">Publication Date: October 26, 2010</p>
+<p align="center">Genre: Non-Fiction</p>
+</section>
+
+ </div>
+
+ 
+ <div class="col-xs-12 col-md-4">
+<img src="images/s 9.png">
+  <font color="ffb552">
+<h1 align="center">Survivor</h1></font>
+<section class="second">
+<p align="center">Author: Chuck Palahniuk</p>
+<p align="center">Publication Date: April 5, 2010 </p>
+<p align="center">Genre: Fiction</p>
+</section>
+ </div>
+
+</div>
+
+<br>
+<br>
+ 
+ <div class="row">
+  <div class=".col-xs-12 .col-md-12">
+            <img src="images/n 2.png" alt="..." />
+            
+    <div class="row">
+      <div class="col-xs-6 col-md-4">
+      
+        <div class="caption post-content">
+              <a href = "https://www.facebook.com/pages/Decker-Library-Media-Resources-Collection/141002159274287"><img src="images/item6.png" width = "43"></a>
+  
+   <a href = "https://twitter.com/DeckerLibrary" ><img src="images/item5.png" width = "43"></a>
+  
+  <a href = "http://deckerlibrary.tumblr.com/" ><img src="images/item7.png" width = "43"></a>
+      </div>
+      
+    </div>
+    </div>      
+     
+    
+    
+</div>
+ </div>
+ 
+ 
+ 
+ <div class="caption post-content">
+ <div class="row">
+  <div class="col-md-2 col-md-offset-7">
+  
+  <font color="ffb552">
+<h1>Hours</h1>
+<section class="second">
+<p>Semester Hours</p></font>
+<font size="2">
+<p>Mon-Thu 8:30am-9pm</p>
+<p>Fri 8:30am-4:30pm</p>
+<p>Sat-Sun 12-6pm</p>
+</font>
+</section>
+  
+  </div>
+  
+  
+  <div class="col-md-3">
+
+  <font color="ffb552">
+<h1>Contact Us</h1></font></font>
+
+
+<font size="2">
+<font color="ffb552">
+<section class="second">
+<p>Circulation Desk</p></font>
+<p>410.225.2272 circ@mica.edu</p>
+</font>
+<font size="2">
+<font color="ffb552">
+<p>Reference Desk</p></font>
+<p>410.225.2273 refer@mica.edu</p></font>
+<font size="2">
+<font color="ffb552">
+<p>Media Resources Collection:</p></font>
+<p>410.225.2274 mrc@mica.edu</p>
+</font>
+</section>
+  </div>
+</div>
+ 
+ 
+ 
+ </div>
+ 
+ 
+
+
+  
+  
+ 
+ </body>
+    
+
+</html>
